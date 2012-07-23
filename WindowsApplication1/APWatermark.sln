@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "APWatermark", "WindowsApplication1\APWatermark.vbproj", "{7FFB1D37-CC53-4228-8759-970D41F7BFCF}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TWM_Setup", "Setup1\Setup1.vdproj", "{8EF443BF-5495-4E08-A017-57968818916A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FFB1D37-CC53-4228-8759-970D41F7BFCF}.Debug|x86.ActiveCfg = Debug|x86
+		{7FFB1D37-CC53-4228-8759-970D41F7BFCF}.Debug|x86.Build.0 = Debug|x86
+		{7FFB1D37-CC53-4228-8759-970D41F7BFCF}.Release|x86.ActiveCfg = Release|x86
+		{7FFB1D37-CC53-4228-8759-970D41F7BFCF}.Release|x86.Build.0 = Release|x86
+		{8EF443BF-5495-4E08-A017-57968818916A}.Debug|x86.ActiveCfg = Debug
+		{8EF443BF-5495-4E08-A017-57968818916A}.Release|x86.ActiveCfg = Release
+		{8EF443BF-5495-4E08-A017-57968818916A}.Release|x86.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
