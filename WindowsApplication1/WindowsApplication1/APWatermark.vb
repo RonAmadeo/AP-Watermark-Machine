@@ -93,35 +93,39 @@ Public Class TWM_Form
     Sub Watermark()
         Dim DirInfo As New DirectoryInfo(txt_input.Text & "\")
         Dim SubDir() As DirectoryInfo = DirInfo.GetDirectories("*")
-        Dim filesPNG() As FileInfo = DirInfo.GetFiles("*.png")
-        For Each File As FileInfo In filesPNG
-            If Not File.Name.Contains("wm_") Then
+        For Each Directory As DirectoryInfo In SubDir
+            MsgBox(Directory.FullName)
 
-                Dim wm_File As New FileInfo(File.DirectoryName & "\wm_" & File.Name)
-                If wm_File.Exists() = False Then
-                    Dim p As New ProcessStartInfo
-                    p.FileName = "composite.exe"
-                    p.Arguments = "-quality 100 -resize ""1680>"" -dissolve 30 -gravity southeast -quality 85 AP_Vid_Watermark.png """ & File.FullName.ToString & """ """ & txt_output.Text & "\wm_" & File.Name.ToString & """"
-                    p.WindowStyle = ProcessWindowStyle.Hidden
-                    Dim CompositeProcess As Process = Process.Start(p)
-                    CompositeProcess.WaitForExit()
-                End If
-            End If
-        Next
+            Dim filesPNG() As FileInfo = DirInfo.GetFiles("*.png")
+            For Each File As FileInfo In filesPNG
+                If Not File.Name.Contains("wm_") Then
 
-        Dim filesJPG() As FileInfo = DirInfo.GetFiles("*.jpg")
-        For Each File As FileInfo In filesJPG
-            If Not File.Name.Contains("wm_") Then
-                Dim wm_File As New FileInfo(File.DirectoryName & "\wm_" & File.Name)
-                If wm_File.Exists() = False Then
-                    Dim p As New ProcessStartInfo
-                    p.FileName = "composite.exe"
-                    p.Arguments = "-quality 100 -resize ""1680>"" -dissolve 30 -gravity southeast -quality 85 AP_Vid_Watermark.png """ & File.FullName.ToString & """ """ & txt_output.Text & "\wm_" & File.Name.ToString & """"
-                    p.WindowStyle = ProcessWindowStyle.Hidden
-                    Dim CompositeProcess As Process = Process.Start(p)
-                    CompositeProcess.WaitForExit()
+                    Dim wm_File As New FileInfo(File.DirectoryName & "\wm_" & File.Name)
+                    If wm_File.Exists() = False Then
+                        Dim p As New ProcessStartInfo
+                        p.FileName = "composite.exe"
+                        p.Arguments = "-quality 100 -resize ""1680>"" -dissolve 30 -gravity southeast -quality 85 AP_Vid_Watermark.png """ & File.FullName.ToString & """ """ & txt_output.Text & "\wm_" & File.Name.ToString & """"
+                        p.WindowStyle = ProcessWindowStyle.Hidden
+                        Dim CompositeProcess As Process = Process.Start(p)
+                        CompositeProcess.WaitForExit()
+                    End If
                 End If
-            End If
+            Next
+
+            Dim filesJPG() As FileInfo = DirInfo.GetFiles("*.jpg")
+            For Each File As FileInfo In filesJPG
+                If Not File.Name.Contains("wm_") Then
+                    Dim wm_File As New FileInfo(File.DirectoryName & "\wm_" & File.Name)
+                    If wm_File.Exists() = False Then
+                        Dim p As New ProcessStartInfo
+                        p.FileName = "composite.exe"
+                        p.Arguments = "-quality 100 -resize ""1680>"" -dissolve 30 -gravity southeast -quality 85 AP_Vid_Watermark.png """ & File.FullName.ToString & """ """ & txt_output.Text & "\wm_" & File.Name.ToString & """"
+                        p.WindowStyle = ProcessWindowStyle.Hidden
+                        Dim CompositeProcess As Process = Process.Start(p)
+                        CompositeProcess.WaitForExit()
+                    End If
+                End If
+            Next
         Next
     End Sub
 
@@ -199,16 +203,6 @@ Public Class TWM_Form
     End Sub
 
     Private Sub folderPath_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles folderPath.Click
-        FolderBrowserDialog1.ShowDialog()
-        txt_input.Text = FolderBrowserDialog1.SelectedPath
-        txt_output.Text = FolderBrowserDialog1.SelectedPath
-    End Sub
-
-    Private Sub txt_input_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txt_input.TextChanged
-
-    End Sub
-
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
 
     End Sub
 End Class
